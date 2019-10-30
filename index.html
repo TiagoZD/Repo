@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<!-- Nombre: Agustin Campon NroEstudiante: 233006 -->
+<!-- Nombre: Tiago Zarzavidjian NroEstudiante: 254824 -->
+
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Proyecto</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="js/oblig.js"></script>
+  </head>
+  <body>
+    <header>
+      <img
+        src="img/gestion.jpeg"
+        id="idFondoimagen"
+        alt="Gestion de Proyectos"
+      />
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#ClientesYEmpleados"> Clientes y Empleados </a></li>
+        <li>
+          <a href="#ProyectosYAsignaciones" id="idnav2">
+            Proyectos y Asignaciones
+          </a>
+        </li>
+        <li>
+          <a href="#ConsultasEInformacion"> Consultas e Informaci&oacute;n </a>
+        </li>
+      </ul>
+    </nav>
+    <section id="seccionClientesEmpleados">
+      <h2 id="ClientesYEmpleados">Gest&iacute;on de Clientes y Empleados</h2>
+      <h3>Registro de Clientes</h3>
+      <form id="idFormRegistroClientes">
+        <label for="txtNombreC"> Nombre </label>
+        <input
+          type="text"
+          id="txtNombreC"
+          placeholder="Nombre"
+          required
+          maxlength="20"
+        />
+
+        <label for="txtTelefonoC"> Tel&eacute;fono </label>
+        <input
+          type="number"
+          id="txtTelefonoC"
+          placeholder="Telefono"
+          min="0"
+          required
+        />
+
+        <label for="txtEmailC"> Correo </label>
+        <input type="email" id="txtEmailC" placeholder="Correo" required />
+
+        <label for="txtSitiowebC"> Web </label>
+        <input type="text" id="txtSitiowebC" placeholder="Web" required />
+        <input type="button" id="botonCliente" value="Registrar" />
+      </form>
+      <h3>Clientes Registrados</h3>
+      <ol id="idListaClientesRegistrados">
+        <li>
+          ANTEL -
+          <a href="https://www.antel.com.uy/" target="_blank">
+            www.antel.com.uy
+          </a>
+        </li>
+        <li>
+          UTE -
+          <a href="https://portal.ute.com.uy/" target="_blank">
+            www.ute.com.uy</a
+          >
+        </li>
+      </ol>
+      <h3>Registro de Empleado</h3>
+      <form id="idFormRegistroEmpleado">
+        <label for="txtNombreE"> Nombre </label>
+        <input
+          type="text"
+          id="txtNombreE"
+          placeholder="Nombre"
+          required
+          maxlength="20"
+        />
+
+        <label for="txtTelefonoE"> Telefono </label>
+        <input
+          type="number"
+          id="txtTelefonoE"
+          placeholder="Telefono"
+          min="0"
+          required
+        />
+
+        <label for="txtSalarioE"> Salario </label>
+        <input
+          type="number"
+          id="txtSalarioE"
+          placeholder="Salario"
+          min="0"
+          required
+        />
+        <input type="button" id="botonEmpleado" value="Registrar" />
+      </form>
+      <p>
+        <br />
+      </p>
+    </section>
+    <section id="sectionProyecto">
+      <h2 id="ProyectosYAsignaciones">
+        Gest&iacute;on de Proyectos y Asignaciones
+      </h2>
+      <h3>Registro de Proyecto</h3>
+      <form id="idRegistroProyecto">
+        <label for="txtNombreP"> Nombre </label>
+        <input
+          type="text"
+          id="txtNombreP"
+          placeholder="Nombre"
+          maxlength="15"
+        />
+
+        <label for="txtDescripcionP"> Descripci&oacute;n </label>
+        <input
+          type="text"
+          id="txtDescripcionP"
+          placeholder="Descripcion"
+          maxlength="35"
+        />
+
+        <label for="comboAreaP"> &Aacute;rea Tematica </label>
+        <select id="comboAreaP">
+          <option value="BigData" selected> 1- Big Data </option>
+          <option value="Machine Learning"> 2- Machine Learning </option>
+          <option value="IoT"> 3- IoT </option>
+          <option value="Data Analysis"> 4- Data Analysis </option>
+          <option value="Otros"> 5- Otros </option>
+        </select>
+
+        <label for="comboClienteP"> Cliente </label>
+        <select id="comboClienteP">
+          <option value="Antel">ANTEL</option>
+        </select>
+
+        <label for="comboLiderP"> Lider </label>
+        <select id="comboLiderP">
+          <option>Florencia Conrado </option>
+        </select>
+        <input type="button" id="botonProyecto" value="Registrar" />
+      </form>
+
+      <h3>Asignaci&oacute;n de Empleados a Proyecto</h3>
+
+      <label for="comboProyecto1"> Proyecto </label>
+      <select id="comboProyecto1">
+        <option value="Avanza"> Avanza </option>
+      </select>
+
+      <label for="comboEmpleados1"> Empleados Disponibles </label>
+      <select id="comboEmpleados1">
+        <option value="Camila Fernandez"> Camila Fernandez </option>
+      </select>
+      <input type="button" id="botonAsignar" value="Asignar" />
+
+      <h3>Eliminaci&oacute;n de Empleados en Proyecto</h3>
+
+      <label for="comboProyecto2"> Proyecto </label>
+      <select id="comboProyecto2">
+        <option> Avanza </option>
+      </select>
+
+      <label for="comboEmpleados2"> Empleados en Proyecto </label>
+      <select id="comboEmpleados2">
+        <option value="Florencia Conrado" selected> Florencia Conrado </option>
+        <option value="Esteban Gris"> Esteban Gris </option>
+      </select>
+      <input type="button" id="botonEliminar" value="Eliminar" />
+    </section>
+    <section id="sectionConsultasInfo">
+      <h2 id="ConsultasEInformacion">Consultas e Informacion</h2>
+      <h3>Consulta de personas en proyecto</h3>
+
+      <label for="idPersonasEnProyectoMin"> Minimo </label>
+      <input type="radio" name="radioB" id="idPersonasEnProyectoMin" checked />
+
+      <label for="idPersonasEnProyectoMax"> Maximo </label>
+      <input type="radio" name="radioB" id="idPersonasEnProyectoMax" />
+
+      <ol id="idListaPersonasEnProyecto">
+        <li>Remodelaci&oacute;n - Lider Florencia Conrado</li>
+      </ol>
+
+      <p>
+        Cantidad de personas: 2
+      </p>
+      <h3>Consulta de Descripci&oacute;n</h3>
+
+      <label for="idSecuenciaDescripcion"> Secuencia </label>
+      <input
+        type="text"
+        id="idSecuenciaDescripcion"
+        placeholder="Secuencia"
+        required
+      />
+      <input type="button" id="botonConsultar" value="Consultar" />
+
+      <h3>Generaci&oacute;n de QR</h3>
+
+      <label for="comboClienteQR"> Seleccione la empresa </label>
+      <select id="comboClienteQR">
+        <option value="Antel"> ANTEL </option>
+      </select>
+      <input type="button" id="botonQR" value="Generar Codigo QR" />
+
+      <h3>Informaci&oacute;n de Empleados</h3>
+
+      <table class="tabla" id="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Salario</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Florencia Conrado</td>
+            <td>4100</td>
+            <td>2</td>
+            <td>
+              <img
+                src="img/sema.jpeg"
+                class="imagenT"
+                id="idSema1"
+                alt="Semaforo"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Esteban Gris</td>
+            <td>3800</td>
+            <td>1</td>
+            <td>
+              <img
+                src="img/sema.jpeg"
+                class="imagenT"
+                id="idSema2"
+                alt="Semaforo"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Camila Fernandez</td>
+            <td>3400</td>
+            <td>1</td>
+            <td>
+              <img
+                src="img/sema.jpeg"
+                class="imagenT"
+                id="idSema3"
+                alt="Semaforo"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Leandro Diaz</td>
+            <td>3100</td>
+            <td>1</td>
+            <td>
+              <img
+                src="img/sema.jpeg"
+                class="imagenT"
+                id="idSema4"
+                alt="Semaforo"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>
+        Informaci&oacute;n de &aacute;rea tem&aacute;tica m&aacute;s frecuente
+      </h3>
+      <p>
+        Tem&aacute;ticas: 1 5
+      </p>
+    </section>
+    <footer>
+      <p id="foot">
+        Obligatorio de Programaci&oacute;n 1 - Realizado por Agust&iacute;n
+        Camp&oacute;n (233006) y Tiago Zarzavidjian (254824)
+        <br />
+        <a href="https://www.facebook.com/" target="_blank"
+          ><img
+            src="img/facebook.jpeg"
+            class="imagenFooter"
+            alt="Facebook"
+            id="idFooterFace"
+        /></a>
+        <a href="https://twitter.com/?lang=es" target="_blank"
+          ><img src="img/twitter.jpeg" class="imagenFooter" alt="Twitter"
+        /></a>
+        <a href="https://www.linkedin.com/uas/login?_l=es" target="_blank"
+          ><img src="img/linkedin.jpeg" class="imagenFooter" alt="Linkedin"
+        /></a>
+      </p>
+    </footer>
+  </body>
+</html>
