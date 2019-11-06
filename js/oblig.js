@@ -1,111 +1,5 @@
 onload = inicio;
 
-class Cliente {
-  constructor(nombre, telefono, email, sitioweb) {
-    this.nombre = nombre;
-    this.telefono = telefono;
-    this.email = email;
-    this.sitioweb = sitioweb;
-  }
-
-  agregar(ingreso) {
-    system.listaClientes.push(ingreso);
-  }
-
-  retornarDatos() {
-    //toma la lista con el nuevo ingreso y la ordena por orden alfabético
-    system.listaClientes.sort(function(a, b) {
-      let retorno = 0;
-      if (a.nombre.toUpperCase() < b.nombre.toUpperCase()) {
-        retorno = -1;
-      }
-      if (a.nombre.toUpperCase() > b.nombre.toUpperCase()) {
-        retorno = 1;
-      }
-      return retorno;
-    });
-    return system.listaClientes;
-  }
-
-  toString() {
-    return this.nombre + " - " + this.sitioweb; //debe mostrarse solo nombre y sitioweb en la lista
-  }
-}
-
-class Empleado {
-  constructor(nombre, telefono, salario, cantidad, estado) {
-    this.nombre = nombre;
-    this.telefono = telefono;
-    this.salario = salario;
-    this.estado = estado;
-    this.cantidad = cantidad;
-  }
-  agregar(ingreso) {
-    system.listaEmpleados.push(ingreso);
-  }
-
-  retornarDatos() {
-    return system.listaEmpleados;
-  }
-
-  toString() {
-    return this.nombre + " " + this.salario + " " + this.estado;
-  }
-}
-
-class Proyecto {
-  constructor(nombre, descripcion, area, cliente, lider, listaAsignados) {
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.area = area;
-    this.cliente = cliente;
-    this.lider = lider;
-    this.listaAsignados = [];
-  }
-  agregar(ingreso) {
-    system.listaProyectos.push(ingreso);
-  }
-
-  retornarDatos() {
-    return system.listaProyectos;
-  }
-
-  toString() {
-    return (
-      this.nombre +
-      " " +
-      this.descripcion +
-      " " +
-      this.area +
-      " " +
-      this.cliente +
-      " " +
-      this.lider +
-      " " +
-      this.listaAsignados
-    );
-  }
-}
-
-class Sistema {
-  constructor() {
-    this.listaClientes = [];
-    this.listaEmpleados = [];
-    this.listaProyectos = [];
-  }
-  agregar(ingreso) {
-    this.lista.push(ingreso);
-  }
-
-  retornarDatos() {
-    return this.lista;
-  }
-
-  toString() {
-    return this.nombre + " " + this.descripcion + " " + this.area;
-  }
-}
-
 const client = new Cliente();
 const employee = new Empleado();
 const project = new Proyecto();
@@ -136,7 +30,8 @@ function agregarCliente() {
   let sitioweb = document.getElementById("txtSitiowebC").value;
   client.agregar(new Cliente(nombre, telefono, email, sitioweb));
   updateClientList();
-  clientesCombo();
+  clientesCombo(document.getElementById("comboClienteP"));
+  clientesCombo(document.getElementById("comboClienteQR"));
 }
 
 function updateClientList() {
@@ -152,8 +47,8 @@ function updateClientList() {
   }
 }
 
-function clientesCombo() {
-  let lista1 = document.getElementById("comboClienteP");
+function clientesCombo(combo) {
+  let lista1 = combo;
   lista1.innerHTML = "";
   let data = client.retornarDatos();
   let data1 = system.listaClientes[0].nombre;
@@ -163,18 +58,6 @@ function clientesCombo() {
     let nodo = document.createTextNode(data1);
     x.appendChild(nodo);
     lista1.appendChild(x);
-  }
-
-  let lista2 = document.getElementById("comboClienteQR");
-  lista2.innerHTML = "";
-  let data2 = system.listaClientes[0].nombre;
-
-  for (let i = 0; i < data.length; i++) {
-    data2 = system.listaClientes[i].nombre;
-    let x = document.createElement("option");
-    let nodo = document.createTextNode(data2);
-    x.appendChild(nodo);
-    lista2.appendChild(x);
   }
 }
 
@@ -186,7 +69,9 @@ function agregarEmpleado() {
   let estado = "Disponible";
   employee.agregar(new Empleado(nombre, telefono, salario, cantidad, estado));
   updateEmployeeList();
-  empleadoCombos();
+  empleadoCombos(document.getElementById("comboEmpleados1"));
+  empleadoCombos(document.getElementById("comboLiderP"));
+  empleadoCombos(document.getElementById("comboEmpleados2"));
 }
 
 function updateEmployeeList() {
@@ -216,9 +101,8 @@ function updateEmployeeList() {
   }
 }
 
-function empleadoCombos() {
-  document.getElementById("idRegistroProyecto").reset();
-  let lista1 = document.getElementById("comboEmpleados1");
+function empleadoCombos(combo) {
+  let lista1 = combo;
   lista1.innerHTML = "";
   let data = employee.retornarDatos();
   let data1 = system.listaEmpleados[0].nombre;
@@ -229,31 +113,6 @@ function empleadoCombos() {
     let nodo = document.createTextNode(data1);
     x.appendChild(nodo);
     lista1.appendChild(x);
-  }
-
-  let listaL = document.getElementById("comboLiderP");
-  listaL.innerHTML = "";
-  let datos = employee.retornarDatos();
-  let dataL = system.listaEmpleados[0].nombre;
-  for (let i = 0; i < datos.length; i++) {
-    dataL = system.listaEmpleados[i].nombre;
-    let x = document.createElement("option");
-    let nodo = document.createTextNode(dataL);
-    x.appendChild(nodo);
-    listaL.appendChild(x);
-  }
-
-  let lista2 = document.getElementById("comboEmpleados2");
-  lista2.innerHTML = "";
-  let dato = employee.retornarDatos();
-  let data2 = system.listaEmpleados[0].nombre;
-
-  for (let i = 0; i < dato.length; i++) {
-    data2 = system.listaEmpleados[i].nombre;
-    let x = document.createElement("option");
-    let nodo = document.createTextNode(data2);
-    x.appendChild(nodo);
-    lista2.appendChild(x);
   }
 }
 
@@ -267,12 +126,13 @@ function agregarProyecto() {
   project.agregar(
     new Proyecto(nombre, descripcion, area, cliente, lider, listaAsignados)
   ); //crea objeto client y usa la función agregar() de la clase Cliente
-  proyectoCombos();
+  proyectoCombos(document.getElementById("comboProyecto1"));
+  proyectoCombos(document.getElementById("comboProyecto2"));
 }
 
-function proyectoCombos() {
+function proyectoCombos(combo) {
   document.getElementById("idRegistroProyecto").reset();
-  let lista1 = document.getElementById("comboProyecto1");
+  let lista1 = combo;
   lista1.innerHTML = "";
   let data = project.retornarDatos();
   let data1 = system.listaProyectos[0].nombre;
@@ -282,17 +142,6 @@ function proyectoCombos() {
     let nodo = document.createTextNode(data1);
     x.appendChild(nodo);
     lista1.appendChild(x);
-  }
-  let lista2 = document.getElementById("comboProyecto2");
-  lista2.innerHTML = "";
-  let data2 = system.listaProyectos[0].nombre;
-
-  for (let i = 0; i < data.length; i++) {
-    data2 = system.listaProyectos[i].nombre;
-    let x = document.createElement("option");
-    let nodo = document.createTextNode(data2);
-    x.appendChild(nodo);
-    lista2.appendChild(x);
   }
 }
 
@@ -304,13 +153,11 @@ function asignarProyecto() {
     if (system.listaProyectos[i].nombre == proyectoN) {
       //si en la posición i (cada posición es un proyecto), el nombre del proyecto es igual al del combobox
       if (system.listaProyectos[i].listaAsignados.indexOf(empleadoN) == -1) {
-        //si no se encuentra en ese proyecto el nombre del empleado del combobox
         system.listaProyectos[i].listaAsignados.push(empleadoN); //le agrega el empleado a la lista de asignados de ese proyecto
         for (let j = 0; j < system.listaEmpleados.length; j++) {
-          //después, recorre la lista de todos los empleados que están en el sistema
           if (system.listaEmpleados[j].nombre == empleadoN) {
             //busca el empleado seleccionado en el combo dentro de la lista de empleados
-            system.listaEmpleados[j].cantidad++; //le suma 1 al valor cantidad porque se le asignó un proyecto nuevo
+            system.listaEmpleados[j].cantidad++;
             if (
               system.listaEmpleados[j].cantidad >= 3 &&
               system.listaEmpleados[j].cantidad < 6
